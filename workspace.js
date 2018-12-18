@@ -34,7 +34,7 @@ cprequire_test(["inline:com-alexphredorg-workspace-dripfeed"], function(ws) {
 } /*end_test*/ );
 
 // This is the main definition of your widget. Give it a unique name.
-cpdefine("inline:com-alexphredorg-workspace-rs232", ["chilipeppr_ready"], function() {
+cpdefine("inline:com-alexphredorg-workspace-dripfeed", ["chilipeppr_ready"], function() {
     return {
         /**
          * The ID of the widget. You must define this and make it unique.
