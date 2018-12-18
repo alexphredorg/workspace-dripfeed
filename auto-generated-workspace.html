@@ -297,6 +297,27 @@ cpdefine("inline:com-alexphredorg-workspace-dripfeed", ["chilipeppr_ready"], fun
             );
         },
         /**
+         * Load the GCode Viewer widget via chilipeppr.load()
+         */
+         loadConsoleWidget: function(callback) {
+            var that = this;
+            chilipeppr.load(
+                "#com-chilipeppr-widget-gcodelist-instance",
+                "http://raw.githubusercontent.com/chilipeppr/widget-gcodelist/master/auto-generated-widget.html",
+                function() {
+                    // Callback after widget loaded into #com-chilipeppr-widget-spconsole-instance
+                    cprequire(
+                        ["inline:com-chilipeppr-widget-gcode"], // the id you gave your widget
+                        function(mywidget) {
+                            // Callback that is passed reference to the newly loaded widget
+                            console.log("Widget / Gcode v8 just got loaded.", myObjWidgetGcode);
+                            myObjWidgetGcode.init();
+                        }
+                    );
+                }
+            );
+        },
+        /**
          * Load the workspace menu and show the pubsubviewer and fork links using
          * our pubsubviewer widget that makes those links for us.
          */
@@ -346,7 +367,7 @@ cpdefine("inline:com-alexphredorg-workspace-dripfeed", ["chilipeppr_ready"], fun
 
                     <div class="com-chilipeppr-ws-hdr well">
                         
-                        Workspace - Sample
+                        Workspace - Drip Feed
 
                         <div class="com-chilipeppr-ws-menu pull-right">
                             <div class="btn-group">
@@ -368,14 +389,6 @@ cpdefine("inline:com-alexphredorg-workspace-dripfeed", ["chilipeppr_ready"], fun
 
                     </div>
 
-                    <div id="mywidget1-instance">
-                        <p class="sample">Widget 1 goes here</p>
-                    </div>
-                    
-                    <div id="com-chilipeppr-widget-template-instance">
-                        <p class="sample">Template Widget goes here</p>
-                    </div>
-
                     <div id="com-chilipeppr-widget-spconsole-instance">
                         Serial Port Console goes here.
                     </div>
@@ -384,8 +397,8 @@ cpdefine("inline:com-alexphredorg-workspace-dripfeed", ["chilipeppr_ready"], fun
 
                 <!-- Center Column -->
                 <div class="col-md-5 col-pad10">
-                    <div id="mywidget2-instance">
-                        <p class="sample" style="min-height:200px;">Widget 2 goes here</p>
+                    <div id="com-chilipeppr-widget-gcodelist-instance">
+                        GCodeList goes here.
                     </div>
                 </div>
 
